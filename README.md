@@ -17,4 +17,5 @@ You may also see any lint errors in the console.
 ## https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
 
 React router
+react-router-dom
 da se navigira po stranicama
