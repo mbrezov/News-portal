@@ -20,15 +20,16 @@ const NewsList = () => {
 
   return (
     <>
-      <h2>News</h2>
-      {Object.entries(news).map(([key, article]) => (
+      {/* <h2>News</h2> */}
+      <ArticleCards />
+      {/* {Object.entries(news).map(([key, article]) => (
         <ArticleCards
           key={key}
           img={article.urlToImage}
           title={article.title}
           author={article.author}
         />
-      ))}
+      ))} */}
     </>
   );
 };

@@ -1,0 +1,41 @@
+.phead-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(180deg, #bb1e1e 71.29%, #b21919 99.95%);
+  height: 60px;
+  color: white;
+  padding: 0px 170px 0px;
+
+  button {
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.phead-text1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.phead-text2 {
+  flex: 2;
+  font-size: 14px;
+  margin-left: 50px;
+}
+
+.btn-1 {
+  height: 40px;
+  width: 70px;
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  margin-right: 25px;
+}
+
+.btn-2 {
+  background-color: transparent;
+  color: white;
+}

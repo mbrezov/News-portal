@@ -1,14 +1,19 @@
-import Navbar from "../components/Navbar";
 import NewsList from "../components/NewsList";
-import Siderbar from "../components/Sidebar";
+
+import "./Homepage.scss";
 
 const Home = () => {
   return (
-    <div>
-      <Navbar />
-      <Siderbar />
-      <NewsList />
-    </div>
+    <>
+      <div className="Homepage">
+        <NewsList />
+        <NewsList />
+        <NewsList />
+        <NewsList />
+        <NewsList />
+        <NewsList />
+      </div>
+    </>
   );
 };
 
