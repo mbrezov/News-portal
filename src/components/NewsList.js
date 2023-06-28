@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import ArticleCards from "./ArticleCard";
+import "./NewsList.scss";
 
 const NewsList = () => {
   const [news, setNews] = useState([]);
@@ -19,18 +20,19 @@ const NewsList = () => {
   }, []);
 
   return (
-    <>
-      {/* <h2>News</h2> */}
-      <ArticleCards />
-      {/* {Object.entries(news).map(([key, article]) => (
-        <ArticleCards
-          key={key}
-          img={article.urlToImage}
-          title={article.title}
-          author={article.author}
-        />
-      ))} */}
-    </>
+    <div className="newslist-container">
+      <p>News</p>
+      <div className="news">
+        {Object.entries(news).map(([key, article]) => (
+          <ArticleCards
+            key={key}
+            img={article.urlToImage}
+            title={article.title}
+            author={article.author}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 

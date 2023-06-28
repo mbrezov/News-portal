@@ -1,0 +1,26 @@
+.searchline-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 175px;
+  margin-right: 175px;
+  margin-bottom: 24px;
+  padding-top: 35px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgb(151, 151, 151, 0.1);
+
+  input {
+    width: 725px;
+    height: 50px;
+    flex-shrink: 0;
+    outline: 0;
+  }
+
+  div {
+    // color: #bb1e1e;
+    color: black;
+    font-size: 32px;
+    font-weight: 900;
+    margin-right: 40px;
+  }
+}
