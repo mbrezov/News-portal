@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
   background: linear-gradient(180deg, #bb1e1e 71.29%, #b21919 99.95%);
   height: 60px;
   color: white;
