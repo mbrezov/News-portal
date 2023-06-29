@@ -10,7 +10,7 @@ const NewsList = () => {
   useEffect(() => {
     axios
       .get(
-        `https://newsapi.org/v2/everything?q=keyword&apiKey=9ae6fe1553854303a30e81bb82105309`
+        `https://newsapi.org/v2/everything?q=mma&apiKey=9ae6fe1553854303a30e81bb82105309`
       )
       .then((res) => {
         const response = res.data.articles;
