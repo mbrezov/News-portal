@@ -4,38 +4,38 @@ import ArticleCards from "../components/ArticleCard";
 import "./Homepage.scss";
 
 const Home = () => {
-  const sections = [
-    "arts",
-    "automobiles",
-    "business",
-    "fashion",
-    "food",
-    "health",
-    "insider",
-    "magazine",
-    "movies",
-    "nyregion",
-    "obituaries",
-    "opinion",
-    "politics",
-    "realestate",
-    "science",
-    "sports",
-    "sundayreview",
-    "technology",
-    "theater",
-    "t-magazine",
-    "travel",
-    "upshot",
-    "us",
-    "world",
-  ];
-
   const [featuredArticles, setFeaturedArticles] = useState([]);
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
+        const sections = [
+          "arts",
+          "automobiles",
+          "business",
+          "fashion",
+          "food",
+          "health",
+          "insider",
+          "magazine",
+          "movies",
+          "nyregion",
+          "obituaries",
+          "opinion",
+          "politics",
+          "realestate",
+          "science",
+          "sports",
+          "sundayreview",
+          "technology",
+          "theater",
+          "t-magazine",
+          "travel",
+          "upshot",
+          "us",
+          "world",
+        ];
+
         const key = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
 
         const requests = sections.map(async (section) => {
@@ -45,7 +45,7 @@ const Home = () => {
           const data = await response.json();
 
           // Extract the top story from the response
-          const topArticleas = data?.results[0];
+          const topArticleas = data.results[0];
 
           return {
             section: section,
@@ -61,7 +61,7 @@ const Home = () => {
     };
 
     fetchArticles();
-  }, [sections]);
+  }, []);
 
   console.log(featuredArticles);
 
