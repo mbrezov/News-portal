@@ -5,7 +5,7 @@ const SearchLine = () => {
     <div className="searchline-container">
       <div>
         My<span>News</span>
-      </div>
+      </div>{" "}
       <input className="searchbar" type="search" placeholder="Search news" />
       <button type="submit">
         <i className="searchbar-button"></i>
