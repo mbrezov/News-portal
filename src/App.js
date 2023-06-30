@@ -10,19 +10,30 @@ function App() {
   return (
     <div className="App">
       <PageHeader />
-      <SearchLine />
       <BrowserRouter>
+        <SearchLine />
         <div className="mainpage">
           <Siderbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/general" element={<NewsList category={"world"} />} />
-            <Route path="/sports" element={<NewsList category={"sports"} />} />
             <Route
-              path="/business"
+              path="/World News"
+              element={<NewsList category={"world"} />}
+            />
+            <Route path="/Sports" element={<NewsList category={"sports"} />} />
+            <Route
+              path="/Business"
               element={<NewsList category={"business"} />}
             />
-            <Route path="/health" element={<NewsList category={"health"} />} />
+            <Route path="/Health" element={<NewsList category={"health"} />} />
+            <Route
+              path="/Technology"
+              element={<NewsList category={"technology"} />}
+            />
+            <Route
+              path="/Science"
+              element={<NewsList category={"science"} />}
+            />
           </Routes>
         </div>
       </BrowserRouter>

@@ -30,15 +30,19 @@ const NewsList = (props) => {
     <div className="newslist-container">
       <p>News</p>
       <div className="news">
-        {Object.entries(news).map(([key, article]) => (
-          <ArticleCards
-            key={key}
-            img={article.multimedia[0]?.url}
-            category={section}
-            title={article.title}
-            author={article.byline}
-          />
-        ))}
+        {Object.entries(news).map(([key, article]) =>
+          article.multimedia &&
+          article.multimedia.length &&
+          article.title.length > 0 ? (
+            <ArticleCards
+              key={key}
+              img={article.multimedia[0].url}
+              category={section}
+              title={article.title}
+              author={article.byline}
+            />
+          ) : null
+        )}
       </div>
     </div>
   );
