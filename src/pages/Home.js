@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <div className="Homepage">
-        <NewsList />
+        <NewsList category={"home"} />
       </div>
     </>
   );

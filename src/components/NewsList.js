@@ -1,23 +1,30 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 import ArticleCards from "./ArticleCard";
 import "./NewsList.scss";
 
-const NewsList = () => {
+const NewsList = (props) => {
   const [news, setNews] = useState([]);
+  const [section, setSection] = useState([]);
+
+  const key = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
+
+  const topic = props.category;
 
   useEffect(() => {
-    axios
-      .get(
-        `https://newsapi.org/v2/everything?q=mma&apiKey=9ae6fe1553854303a30e81bb82105309`
-      )
-      .then((res) => {
-        const response = res.data.articles;
-        setNews(response);
-        console.log(response);
-      });
-  }, []);
+    const fetchNews = async () => {
+      const res = await fetch(
+        `https://api.nytimes.com/svc/topstories/v2/${topic}.json?api-key=${key}`
+      );
+      const json = await res.json();
+
+      setNews(json.results);
+      setSection(json.section);
+      console.log(json.results);
+      console.log(json.section);
+    };
+    fetchNews();
+  }, [topic]);
 
   return (
     <div className="newslist-container">
@@ -26,9 +33,10 @@ const NewsList = () => {
         {Object.entries(news).map(([key, article]) => (
           <ArticleCards
             key={key}
-            img={article.urlToImage}
+            img={article.multimedia[0]?.url}
+            category={section}
             title={article.title}
-            author={article.author}
+            author={article.byline}
           />
         ))}
       </div>
