@@ -24,9 +24,8 @@ const Favorites = () => {
             key={key}
             img={article.isFav[0].img}
             category={article.isFav[0].category}
-            title={article.title}
+            title={article.isFav[0].title}
             author={article.isFav[0].author}
-            // Pass other props to ArticleCards component as needed
           />
         ))}
       </div>

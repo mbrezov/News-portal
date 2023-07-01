@@ -1,7 +1,5 @@
 import NewsList from "../components/NewsList";
 
-import "./Homepage.scss";
-
 const Home = () => {
   // const sections = [
   //   "arts",
