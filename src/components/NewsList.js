@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import ArticleCards from "./ArticleCard";
 import "./NewsList.scss";
@@ -29,6 +30,9 @@ const NewsList = (props) => {
   return (
     <div className="newslist-container">
       <p>News</p>
+      <NavLink to="/favorites" className="fav">
+        Favorites
+      </NavLink>
       <div className="news">
         {Object.entries(news).map(([key, article]) =>
           article.multimedia &&

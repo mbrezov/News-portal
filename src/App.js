@@ -5,6 +5,7 @@ import Siderbar from "./components/Sidebar";
 import "./App.scss";
 import SearchLine from "./components/SearchLine";
 import NewsList from "./components/NewsList";
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <div className="mainpage">
           <Siderbar />
           <Routes>
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/" element={<Home />} />
             <Route
               path="/World News"
