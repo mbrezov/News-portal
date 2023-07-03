@@ -27,7 +27,9 @@ const NewsList = (props) => {
     <div>
       <div className="newslist-container">
         <div className="newslist-desktop-nav">
-          <p>News</p>
+          <NavLink to="/" className="all-news">
+            News
+          </NavLink>
           <NavLink to="/favorites" className="fav">
             Favorites
           </NavLink>
