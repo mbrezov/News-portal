@@ -41,3 +41,9 @@
   color: white;
   margin-right: 45px;
 }
+
+@media (max-width: 480px) {
+  .phead-container {
+    display: none;
+  }
+}

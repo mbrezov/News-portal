@@ -26,10 +26,20 @@ const NewsList = (props) => {
   return (
     <div>
       <div className="newslist-container">
-        <p>News</p>
-        <NavLink to="/favorites" className="fav">
-          Favorites
-        </NavLink>
+        <div className="newslist-desktop-nav">
+          <p>News</p>
+          <NavLink to="/favorites" className="fav">
+            Favorites
+          </NavLink>
+        </div>
+        <div className="newslist-mobile-nav">
+          <NavLink to="/" className="fav">
+            Featured
+          </NavLink>
+          <NavLink to="/favorites" className="fav">
+            Latest
+          </NavLink>
+        </div>
         <div className="news">
           {Object.entries(news).map(([key, article]) =>
             article.multimedia &&

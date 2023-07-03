@@ -73,3 +73,10 @@
     fill: white;
   }
 }
+@media (max-width: 480px) {
+  .card-container {
+    a {
+      pointer-events: none;
+    }
+  }
+}

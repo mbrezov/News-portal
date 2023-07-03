@@ -37,3 +37,9 @@
     color: #bb1e1e;
   }
 }
+
+@media (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -1,4 +1,8 @@
 .newslist-container {
+  .newslist-mobile-nav {
+    display: none;
+  }
+
   p {
     display: inline-flex;
     color: #1d1d1b;
@@ -27,4 +31,52 @@
 .active {
   color: #1d1d1b;
   opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .newslist-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .newslist-desktop-nav {
+      display: none;
+    }
+
+    .active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #bb1e1e;
+      background-color: rgb(187, 30, 30, 0.1);
+      width: 100px;
+      height: 40px;
+      border-radius: 20px;
+    }
+
+    .newslist-mobile-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 15px;
+
+      p {
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .fav {
+        opacity: 1;
+      }
+    }
+  }
+
+  .news {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
 }
