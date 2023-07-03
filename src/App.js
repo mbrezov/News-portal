@@ -6,6 +6,7 @@ import "./App.scss";
 import SearchLine from "./components/SearchLine";
 import NewsList from "./components/NewsList";
 import Favorites from "./pages/Favorites";
+import FavoritesContextProvider from "./context/FavoritesContext";
 
 function App() {
   return (
@@ -15,28 +16,33 @@ function App() {
         <SearchLine />
         <div className="mainpage">
           <Siderbar />
-          <Routes>
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/World News"
-              element={<NewsList category={"world"} />}
-            />
-            <Route path="/Sports" element={<NewsList category={"sports"} />} />
-            <Route
-              path="/Business"
-              element={<NewsList category={"business"} />}
-            />
-            <Route path="/Health" element={<NewsList category={"health"} />} />
-            <Route
-              path="/Technology"
-              element={<NewsList category={"technology"} />}
-            />
-            <Route
-              path="/Science"
-              element={<NewsList category={"science"} />}
-            />
-          </Routes>
+          <FavoritesContextProvider>
+            <Routes>
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/World" element={<NewsList category={"world"} />} />
+              <Route
+                path="/Sports"
+                element={<NewsList category={"sports"} />}
+              />
+              <Route
+                path="/Business"
+                element={<NewsList category={"business"} />}
+              />
+              <Route
+                path="/Health"
+                element={<NewsList category={"health"} />}
+              />
+              <Route
+                path="/Technology"
+                element={<NewsList category={"technology"} />}
+              />
+              <Route
+                path="/Science"
+                element={<NewsList category={"science"} />}
+              />
+            </Routes>
+          </FavoritesContextProvider>
         </div>
       </BrowserRouter>
     </div>

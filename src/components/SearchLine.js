@@ -1,7 +1,21 @@
+import { useState } from "react";
 import "./SearchLine.scss";
 import { NavLink } from "react-router-dom";
 
 const SearchLine = () => {
+  const [search, setSearch] = useState("");
+
+  const handleSearch = () => {
+    console.log("Performing search with value:", search);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  console.log(search);
   return (
     <div className="searchline-container">
       <NavLink to="/">
@@ -22,8 +36,17 @@ const SearchLine = () => {
             fill="#1D1D1B"
           />
         </svg>
-        <input className="searchbar" type="search" placeholder="Search news" />
-        <button type="submit">SEARCH</button>
+        <input
+          className="searchbar"
+          type="search"
+          placeholder="Search news"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleKeyPress}
+        />
+        <button type="submit" onClick={handleSearch}>
+          SEARCH
+        </button>
       </div>
     </div>
   );

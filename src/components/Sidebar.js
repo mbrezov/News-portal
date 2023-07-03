@@ -22,7 +22,7 @@ const Siderbar = () => {
         </svg>
         <div>Home</div>
       </NavLink>
-      <NavLink to="/World News">
+      <NavLink to="/World">
         <svg
           width="20"
           height="20"

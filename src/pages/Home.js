@@ -1,34 +1,61 @@
-import NewsList from "../components/NewsList";
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
+import ArticleCards from "../components/ArticleCard";
+import "../components/NewsList.scss";
 
 const Home = () => {
-  // const sections = [
-  //   "arts",
-  //   "automobiles",
-  //   "business",
-  //   "fashion",
-  //   "food",
-  //   "health",
-  //   "insider",
-  //   "magazine",
-  //   "movies",
-  //   "nyregion",
-  //   "obituaries",
-  //   "opinion",
-  //   "politics",
-  //   "realestate",
-  //   "science",
-  //   "sports",
-  //   "sundayreview",
-  //   "technology",
-  //   "theater",
-  //   "t-magazine",
-  //   "travel",
-  //   "upshot",
-  //   "us",
-  //   "world",
-  // ];
+  const [news, setNews] = useState([]);
+  const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
+  const search = "";
 
-  return <NewsList category={"home"} />;
+  useEffect(() => {
+    const fetchNews = async () => {
+      const res = await fetch(
+        `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apikey}`
+      );
+      const json = await res.json();
+
+      const filtered = json.results.filter((article) => {
+        return (
+          article &&
+          article.title &&
+          article.title.toLowerCase().includes(search)
+        );
+      });
+
+      setNews(filtered);
+
+      console.log(filtered);
+    };
+    fetchNews();
+  }, [search]);
+
+  return (
+    <div>
+      <div className="newslist-container">
+        <p>News</p>
+        <NavLink to="/favorites" className="fav">
+          Favorites
+        </NavLink>
+        <div className="news">
+          {Object.entries(news).map(([key, article]) =>
+            article.multimedia &&
+            article.multimedia.length &&
+            article.title.length > 0 ? (
+              <ArticleCards
+                key={key}
+                img={article.multimedia[0].url}
+                category={article.section}
+                title={article.title}
+                author={article.byline}
+              />
+            ) : null
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
