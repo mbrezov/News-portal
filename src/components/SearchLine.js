@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "./SearchLine.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const SearchLine = () => {
   const [search, setSearch] = useState("");
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     console.log("Performing search with value:", search);
@@ -18,25 +21,71 @@ const SearchLine = () => {
   console.log(search);
   return (
     <div className="searchline-container">
-      <div className="searchline-header">
+      <div
+        className={
+          location.pathname === "/mobilemenu"
+            ? "searchline-header-mobilemenu"
+            : "searchline-header"
+        }
+      >
         <NavLink to="/">
           My<span>News</span>
         </NavLink>
-        <button className="mobile-menu">
-          <svg
-            width="24"
-            height="20"
-            viewBox="0 0 24 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="24" height="4" rx="1" fill="#1D1D1B" />
-            <rect y="8" width="24" height="4" rx="1" fill="#1D1D1B" />
-            <rect y="16" width="24" height="4" rx="1" fill="#1D1D1B" />
-          </svg>
-        </button>
+        <div>
+          {location.pathname === "/mobilemenu" ? (
+            <button className="mobile-menu" onClick={(e) => navigate(-1)}>
+              <svg
+                width="24"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="2.82843"
+                  width="24"
+                  height="4"
+                  rx="1"
+                  transform="rotate(45 2.82843 0)"
+                  fill="#1D1D1B"
+                />
+                <rect
+                  y="16.9706"
+                  width="24"
+                  height="4"
+                  rx="1"
+                  transform="rotate(-45 0 16.9706)"
+                  fill="#1D1D1B"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="mobile-menu"
+              onClick={(e) => (window.location.href = "/mobilemenu")}
+            >
+              <svg
+                width="24"
+                height="20"
+                viewBox="0 0 24 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="24" height="4" rx="1" fill="#1D1D1B" />
+                <rect y="8" width="24" height="4" rx="1" fill="#1D1D1B" />
+                <rect y="16" width="24" height="4" rx="1" fill="#1D1D1B" />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
-      <div className="search-container">
+      <div
+        className={
+          location.pathname === "/mobilemenu"
+            ? "search-container-mobilemenu"
+            : "search-container"
+        }
+      >
         <svg
           width="20"
           height="20"

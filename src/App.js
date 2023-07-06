@@ -7,6 +7,7 @@ import SearchLine from "./components/SearchLine";
 import NewsList from "./components/NewsList";
 import Favorites from "./pages/Favorites";
 import FavoritesContextProvider from "./context/FavoritesContext";
+import MobileMenu from "./pages/MobileMenu";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
           <Siderbar />
           <FavoritesContextProvider>
             <Routes>
+              <Route path="/mobilemenu" element={<MobileMenu />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/" element={<Home />} />
+
               <Route path="/World" element={<NewsList category={"world"} />} />
               <Route
                 path="/Sports"
