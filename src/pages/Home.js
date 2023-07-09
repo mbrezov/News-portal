@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import LatestNews from "../components/LatestNews";
 
 import ArticleCards from "../components/ArticleCard";
 import "../components/NewsList.scss";
@@ -26,7 +27,7 @@ const Home = () => {
 
       setNews(filtered);
 
-      console.log(filtered);
+      // console.log(filtered);
     };
     fetchNews();
   }, [search]);
@@ -51,6 +52,9 @@ const Home = () => {
           </NavLink>
         </div>
         <div className="news">
+          <div className="latest-widget">
+            <LatestNews />
+          </div>
           {Object.entries(news).map(([key, article]) =>
             article.multimedia &&
             article.multimedia.length &&

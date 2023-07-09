@@ -1,0 +1,10 @@
+.latestnews-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 320px;
+  height: 530px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: auto;
+}

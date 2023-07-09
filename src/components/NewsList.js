@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import ArticleCards from "./ArticleCard";
 import "./NewsList.scss";
+import LatestNews from "./LatestNews";
 
 const NewsList = (props) => {
   const [news, setNews] = useState([]);
@@ -18,7 +19,7 @@ const NewsList = (props) => {
 
       setNews(json.results);
 
-      console.log(json.results);
+      // console.log(json.results);
     };
     fetchNews();
   }, [section]);
@@ -43,6 +44,9 @@ const NewsList = (props) => {
           </NavLink>
         </div>
         <div className="news">
+          <div className="latest-widget">
+            <LatestNews />
+          </div>
           {Object.entries(news).map(([key, article]) =>
             article.multimedia &&
             article.multimedia.length &&

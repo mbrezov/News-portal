@@ -8,6 +8,7 @@ import NewsList from "./components/NewsList";
 import Favorites from "./pages/Favorites";
 import FavoritesContextProvider from "./context/FavoritesContext";
 import MobileMenu from "./pages/MobileMenu";
+import LatestNews from "./components/LatestNews";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               />
             </Routes>
           </FavoritesContextProvider>
+          {/* <LatestNews /> */}
         </div>
       </BrowserRouter>
     </div>

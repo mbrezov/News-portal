@@ -28,13 +28,20 @@
   color: #1d1d1b;
   font-weight: 600;
   font-size: 18px;
-  opacity: 0.65;
+  opacity: 0.75;
 }
 
 .news {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  grid-template-areas:
+    "a a b"
+    "a a b";
+
+  .latest-widget {
+    grid-area: b;
+  }
 }
 
 .active {
@@ -87,5 +94,9 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+  }
+
+  .latest-widget {
+    display: none;
   }
 }
