@@ -5,19 +5,19 @@ import "./LatestNews.scss";
 
 const LatestNews = () => {
   const [latestNews, setLatestNews] = useState([]);
-  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(0);
   const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
 
   useEffect(() => {
     axios
       .get(
-        `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apikey}&offset=${offset}`
+        `https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key=${apikey}&limit=${limit}`
       )
       .then((results) => {
         const fetchedData = results.data.results;
         setLatestNews((prev) => [...prev, ...fetchedData]);
       });
-  }, [offset]);
+  }, [limit]);
 
   useEffect(() => {
     const container = document.getElementById("latestnews-container");
@@ -27,7 +27,7 @@ const LatestNews = () => {
       const currentHeight = container.offsetHeight + container.scrollTop;
 
       if (currentHeight + 1 >= scrollHeight) {
-        setOffset((prevOffset) => prevOffset + 10);
+        setLimit((prevLimit) => prevLimit + 20);
       }
     };
 
