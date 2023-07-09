@@ -18,6 +18,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
 
 body::-webkit-scrollbar {
   width: 8px;
@@ -32,16 +36,3 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid #941010;
   border-radius: 5px;
 }
-
-// html {
-//   overflow: scroll;
-//   overflow-x: hidden;
-// }
-// ::-webkit-scrollbar {
-//   width: 0; /* Remove scrollbar space */
-//   background: transparent; /* Optional: just make scrollbar invisible */
-// }
-// /* Optional: show position indicator in red */
-// ::-webkit-scrollbar-thumb {
-//   background: #ff0000;
-// }
