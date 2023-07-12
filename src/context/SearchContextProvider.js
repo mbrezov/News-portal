@@ -6,14 +6,18 @@ const SearchContextProvider = (props) => {
 
   const articleSearchBar = (search) => {
     setArticleSearch(search);
-    console.log(articleSearch);
     return articleSearch;
+  };
+
+  const resetSearch = () => {
+    setArticleSearch("");
   };
 
   return (
     <SearchContext.Provider
       value={{
         articleSearch,
+        resetSearch,
         articleSearchBar,
       }}
     >

@@ -11,20 +11,20 @@
   button {
     border: none;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     border-radius: 8px;
   }
 }
 
 .phead-text1 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .phead-text2 {
   flex: 2;
-  font-size: 14px;
+  font-size: 0.875rem;
   margin-left: 50px;
 }
 
@@ -40,6 +40,51 @@
   background-color: transparent;
   color: white;
   margin-right: 45px;
+}
+
+@media (max-width: 1280px) {
+  .phead-text2 {
+    font-size: 0.75rem;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .phead-text2 {
+    font-size: 0.6rem;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 940px) {
+  .phead-text2 {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .phead-container {
+    button {
+      border: none;
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+  }
+  .phead-text1 {
+    font-size: 0.8rem;
+  }
+
+  .btn-1 {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 740px) {
+  .phead-container {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {

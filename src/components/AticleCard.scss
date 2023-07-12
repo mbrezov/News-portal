@@ -48,7 +48,7 @@
     color: #1e71bb;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 0.625rem;
     font-weight: 600;
     padding-top: 2px;
     width: fit-content;
@@ -56,7 +56,7 @@
 }
 
 .card-title {
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: 2px;
   height: 70px;
 }
@@ -64,7 +64,7 @@
 .card-author {
   display: inline-flex;
   align-items: baseline;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .bookmark {
