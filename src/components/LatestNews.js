@@ -34,7 +34,9 @@ const LatestNews = () => {
     container.addEventListener("scroll", handleScroll);
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
-  console.log(limit);
+  // console.log(limit);
+  // console.log(latestNews);
+
   return (
     <div className="latestnews-container" id="latestnews-container">
       <div className="latest-news-header">

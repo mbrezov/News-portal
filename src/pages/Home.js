@@ -47,7 +47,7 @@ const Home = () => {
           <NavLink to="/" className="fav">
             Featured
           </NavLink>
-          <NavLink to="/favorites" className="fav">
+          <NavLink to="/latest news" className="fav">
             Latest
           </NavLink>
         </div>

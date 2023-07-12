@@ -56,5 +56,10 @@
 }
 
 .latestnews-container::-webkit-scrollbar {
-  width: 0;
+  width: 4px;
+}
+
+.latestnews-container::-webkit-scrollbar-thumb {
+  background-color: #b9b6b6;
+  border-radius: 5px;
 }

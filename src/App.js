@@ -6,24 +6,23 @@ import "./App.scss";
 import SearchLine from "./components/SearchLine";
 import NewsList from "./components/NewsList";
 import Favorites from "./pages/Favorites";
-import FavoritesContextProvider from "./context/FavoritesContext";
 import MobileMenu from "./pages/MobileMenu";
-import LatestNews from "./components/LatestNews";
+import LatestNewsMobile from "./pages/LatestNewsMobile";
+import FavContextProvider from "./context/FavArticleContext";
 
 function App() {
   return (
     <div className="App">
-      <PageHeader />
-      <BrowserRouter>
-        <SearchLine />
-        <div className="mainpage">
-          <Siderbar />
-          <FavoritesContextProvider>
+      <FavContextProvider>
+        <PageHeader />
+        <BrowserRouter>
+          <SearchLine />
+          <div className="mainpage">
+            <Siderbar />
             <Routes>
               <Route path="/mobilemenu" element={<MobileMenu />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/" element={<Home />} />
-
               <Route path="/World" element={<NewsList category={"world"} />} />
               <Route
                 path="/Sports"
@@ -45,11 +44,11 @@ function App() {
                 path="/Science"
                 element={<NewsList category={"science"} />}
               />
+              <Route path="/latest news" element={<LatestNewsMobile />} />
             </Routes>
-          </FavoritesContextProvider>
-          {/* <LatestNews /> */}
-        </div>
-      </BrowserRouter>
+          </div>
+        </BrowserRouter>
+      </FavContextProvider>
     </div>
   );
 }

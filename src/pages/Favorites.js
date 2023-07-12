@@ -1,17 +1,12 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { FavContext } from "../context/FavArticleContext";
 import ArticleCards from "../components/ArticleCard";
-
 import "../components/NewsList.scss";
 
 const Favorites = () => {
-  const articles = Object.keys(localStorage).map((key, value) => {
-    return {
-      title: key,
-      isFav: JSON.parse(localStorage.getItem(key)),
-    };
-  });
+  const { favArticles } = useContext(FavContext);
 
-  console.log(articles);
   return (
     <div className="newslist-container">
       <div className="newslist-desktop-nav">
@@ -26,21 +21,27 @@ const Favorites = () => {
         <NavLink to="/" className="fav">
           Featured
         </NavLink>
-        <NavLink to="/favorites" className="fav">
+        <NavLink to="/latest news" className="fav">
           Latest
         </NavLink>
       </div>
-      <div className="news">
-        {articles.map((article, key) => (
-          <ArticleCards
-            key={key}
-            img={article.isFav[0].img}
-            category={article.isFav[0].category}
-            title={article.isFav[0].title}
-            author={article.isFav[0].author}
-          />
-        ))}
-      </div>
+      {favArticles.length > 0 ? (
+        <div className="news">
+          {favArticles.map((article, key) => (
+            <ArticleCards
+              key={key}
+              img={article.img}
+              category={article.category}
+              title={article.title}
+              author={article.author}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="no-news">
+          No <span>news</span> available <span>:(</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,40 +1,37 @@
-import { NavLink, useLocation } from "react-router-dom";
-import "./AticleCard.scss";
+import { useContext } from "react";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { FavContext } from "../context/FavArticleContext";
+import "./AticleCard.scss";
 
 const ArticleCards = (props) => {
-  const location = useLocation();
-  const [isFav, setIsFav] = useState([]);
+  const { addFavArticle, removeFavArticle, isArticleFavorite } =
+    useContext(FavContext);
+
+  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
-    const localData = localStorage.getItem(props.title);
-    setIsFav(localData ? JSON.parse(localData) : false);
-  }, [props.title]);
+    setIsFav(isArticleFavorite(props.title));
+  }, [isArticleFavorite, props.title]);
 
-  const onClickHandler = () => {
-    const newFav = [
-      {
-        title: props.title,
-        category: props.category,
-        author: props.author,
-        img: props.img,
-      },
-    ];
-    setIsFav(newFav);
-    localStorage.setItem(props.title, JSON.stringify(newFav));
+  const onClickAddFav = () => {
+    addFavArticle(props.title, props.category, props.author, props.img);
+    setIsFav(true);
   };
+  //   var id = JSON.stringify(uuid());
+  //   addFavArticle(props.title, props.category, props.author, props.img, id);
+  //   console.log(favArticles);
+  // };
 
-  const onClickRemoveArticle = () => {
-    localStorage.removeItem(props.title);
-    if (location.pathname === "/favorites") {
-      window.location.reload();
-    }
+  const onClickRemoveFav = () => {
+    removeFavArticle(props.title);
+    setIsFav(false);
   };
 
   return (
     <div className="card-container">
       {!isFav ? (
-        <button onClick={onClickHandler} className={isFav ? "bookmark" : ""}>
+        <button onClick={onClickAddFav} className={isFav ? "bookmark" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -52,10 +49,7 @@ const ArticleCards = (props) => {
           </svg>
         </button>
       ) : (
-        <button
-          onClick={onClickRemoveArticle}
-          className={isFav ? "bookmark" : ""}
-        >
+        <button onClick={onClickRemoveFav} className={isFav ? "bookmark" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

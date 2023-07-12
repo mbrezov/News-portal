@@ -45,6 +45,21 @@
   }
 }
 
+.no-news {
+  display: flex;
+  gap: 0.5rem;
+  width: 1000px;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 80px;
+
+  span {
+    font-weight: 800;
+    color: #bb1e1e;
+  }
+}
+
 .active {
   color: #1d1d1b;
   opacity: 1;
@@ -95,6 +110,19 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+  }
+
+  .no-news {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 80px;
+
+    span {
+      font-weight: 800;
+      color: #bb1e1e;
+    }
   }
 
   .latest-widget {

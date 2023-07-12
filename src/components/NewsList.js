@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import ArticleCards from "./ArticleCard";
-import "./NewsList.scss";
 import LatestNews from "./LatestNews";
+import "./NewsList.scss";
 
 const NewsList = (props) => {
   const [news, setNews] = useState([]);
@@ -25,42 +25,40 @@ const NewsList = (props) => {
   }, [section]);
 
   return (
-    <div>
-      <div className="newslist-container">
-        <div className="newslist-desktop-nav">
-          <NavLink to="/" className="all-news">
-            News
-          </NavLink>
-          <NavLink to="/favorites" className="fav">
-            Favorites
-          </NavLink>
+    <div className="newslist-container">
+      <div className="newslist-desktop-nav">
+        <NavLink to="/" className="all-news">
+          News
+        </NavLink>
+        <NavLink to="/favorites" className="fav">
+          Favorites
+        </NavLink>
+      </div>
+      <div className="newslist-mobile-nav">
+        <NavLink to="/" className="fav">
+          Featured
+        </NavLink>
+        <NavLink to="/latest news" className="fav">
+          Latest
+        </NavLink>
+      </div>
+      <div className="news">
+        <div className="latest-widget">
+          <LatestNews />
         </div>
-        <div className="newslist-mobile-nav">
-          <NavLink to="/" className="fav">
-            Featured
-          </NavLink>
-          <NavLink to="/favorites" className="fav">
-            Latest
-          </NavLink>
-        </div>
-        <div className="news">
-          <div className="latest-widget">
-            <LatestNews />
-          </div>
-          {Object.entries(news).map(([key, article]) =>
-            article.multimedia &&
-            article.multimedia.length &&
-            article.title.length > 0 ? (
-              <ArticleCards
-                key={key}
-                img={article.multimedia[0].url}
-                category={section === "home" ? article.section : section}
-                title={article.title}
-                author={article.byline}
-              />
-            ) : null
-          )}
-        </div>
+        {Object.entries(news).map(([key, article]) =>
+          article.multimedia &&
+          article.multimedia.length &&
+          article.title.length > 0 ? (
+            <ArticleCards
+              key={key}
+              img={article.multimedia[0].url}
+              category={section === "home" ? article.section : section}
+              title={article.title}
+              author={article.byline}
+            />
+          ) : null
+        )}
       </div>
     </div>
   );
