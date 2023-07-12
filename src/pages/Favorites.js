@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FavContext } from "../context/FavArticleContext";
+import { SearchContext } from "../context/SearchContextProvider";
 import ArticleCards from "../components/ArticleCard";
 import "../components/NewsList.scss";
 
 const Favorites = () => {
   const { favArticles } = useContext(FavContext);
+  const { articleSearch } = useContext(SearchContext);
 
   return (
     <div className="newslist-container">
@@ -27,15 +29,17 @@ const Favorites = () => {
       </div>
       {favArticles.length > 0 ? (
         <div className="news">
-          {favArticles.map((article, key) => (
-            <ArticleCards
-              key={key}
-              img={article.img}
-              category={article.category}
-              title={article.title}
-              author={article.author}
-            />
-          ))}
+          {favArticles.map((article, key) =>
+            article.title.toLowerCase().includes(articleSearch) ? (
+              <ArticleCards
+                key={key}
+                img={article.img}
+                category={article.category}
+                title={article.title}
+                author={article.author}
+              />
+            ) : null
+          )}
         </div>
       ) : (
         <div className="no-news">

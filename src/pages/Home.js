@@ -18,18 +18,10 @@ const Home = () => {
         `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apikey}`
       );
       const json = await res.json();
-
-      const filtered = json.results.filter((article) => {
-        return (
-          article &&
-          article.title &&
-          article.title.toLowerCase().includes(articleSearch)
-        );
-      });
-      setNews(filtered);
+      setNews(json.results);
     };
     fetchNews();
-  }, [articleSearch]);
+  }, []);
 
   return (
     <div>
@@ -57,7 +49,8 @@ const Home = () => {
           {Object.entries(news).map(([key, article]) =>
             article.multimedia &&
             article.multimedia.length &&
-            article.title.length > 0 ? (
+            article.title.length > 0 &&
+            article.title.toLowerCase().includes(articleSearch) ? (
               <ArticleCards
                 key={key}
                 img={article.multimedia[0].url}

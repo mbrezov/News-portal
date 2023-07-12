@@ -5,21 +5,27 @@ import { SearchContext } from "../context/SearchContextProvider";
 
 const SearchLine = () => {
   const [search, setSearch] = useState("");
-
-  const { articleSearchBar } = useContext(SearchContext);
+  const [clear, setClear] = useState(false);
+  const { articleSearchBar, resetSearch } = useContext(SearchContext);
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSearch = () => {
     articleSearchBar(search);
-    console.log("Performing search with value:", search);
+    setClear(true);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch();
+      setClear(true);
     }
+  };
+
+  const onClickResetSearch = (e) => {
+    resetSearch();
+    setClear(false);
   };
 
   return (
@@ -31,7 +37,7 @@ const SearchLine = () => {
             : "searchline-header"
         }
       >
-        <NavLink to="/">
+        <NavLink to="/" onClick={onClickResetSearch}>
           My<span>News</span>
         </NavLink>
         <div>
@@ -111,9 +117,13 @@ const SearchLine = () => {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleKeyPress}
         />
-        <button type="submit" className="searchbutton" onClick={handleSearch}>
-          SEARCH
-        </button>
+        {!clear ? (
+          <button type="submit" className="searchbutton" onClick={handleSearch}>
+            SEARCH
+          </button>
+        ) : (
+          <button onClick={onClickResetSearch}>CLEAR</button>
+        )}
       </div>
     </div>
   );
