@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-
+import { SearchContext } from "../context/SearchContextProvider";
 import ArticleCards from "./ArticleCard";
 import LatestNews from "./LatestNews";
 import "./NewsList.scss";
@@ -9,6 +9,7 @@ const NewsList = (props) => {
   const [news, setNews] = useState([]);
   const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
   const section = props.category;
+  const { articleSearch } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -17,12 +18,17 @@ const NewsList = (props) => {
       );
       const json = await res.json();
 
-      setNews(json.results);
-
-      // console.log(json.results);
+      const filtered = json.results.filter((article) => {
+        return (
+          article &&
+          article.title &&
+          article.title.toLowerCase().includes(articleSearch)
+        );
+      });
+      setNews(filtered);
     };
     fetchNews();
-  }, [section]);
+  }, [section, articleSearch]);
 
   return (
     <div className="newslist-container">

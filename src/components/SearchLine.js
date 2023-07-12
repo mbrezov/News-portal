@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./SearchLine.scss";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { SearchContext } from "../context/SearchContextProvider";
 
 const SearchLine = () => {
   const [search, setSearch] = useState("");
+
+  const { articleSearchBar } = useContext(SearchContext);
 
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSearch = () => {
+    articleSearchBar(search);
     console.log("Performing search with value:", search);
   };
 
@@ -18,7 +22,6 @@ const SearchLine = () => {
     }
   };
 
-  console.log(search);
   return (
     <div className="searchline-container">
       <div

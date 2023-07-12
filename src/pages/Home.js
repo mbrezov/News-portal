@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { SearchContext } from "../context/SearchContextProvider";
 import LatestNews from "../components/LatestNews";
-
 import ArticleCards from "../components/ArticleCard";
 import "../components/NewsList.scss";
 
 const Home = () => {
   const [news, setNews] = useState([]);
   const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
-  const search = "";
+  const { articleSearch } = useContext(SearchContext);
+
+  console.log(articleSearch);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -21,16 +23,13 @@ const Home = () => {
         return (
           article &&
           article.title &&
-          article.title.toLowerCase().includes(search)
+          article.title.toLowerCase().includes(articleSearch)
         );
       });
-
       setNews(filtered);
-
-      // console.log(filtered);
     };
     fetchNews();
-  }, [search]);
+  }, [articleSearch]);
 
   return (
     <div>
