@@ -23,17 +23,23 @@
 
   .latest-news-footer {
     position: sticky;
+    display: flex;
+    align-items: center;
     bottom: 0;
     z-index: 999;
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    margin: 0;
     padding: 15px 0 15px 15px;
-    color: #1e71bb;
+    margin: 0;
     background-color: white;
-    height: 35px;
+    height: 40px;
     border-top: 1px solid rgb(151, 151, 151, 0.1);
+
+    .latest-news-footer-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      color: #1e71bb;
+      text-decoration: none;
+    }
   }
 
   .latest-news-article-container {
