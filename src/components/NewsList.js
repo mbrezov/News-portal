@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 import { SearchContext } from "../context/SearchContextProvider";
 import ArticleCards from "./ArticleCard";
 import LatestNews from "./LatestNews";
@@ -7,19 +8,19 @@ import "./NewsList.scss";
 
 const NewsList = (props) => {
   const [news, setNews] = useState([]);
+  const { articleSearch } = useContext(SearchContext);
   const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
   const section = props.category;
-  const { articleSearch } = useContext(SearchContext);
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const res = await fetch(
+    axios
+      .get(
         `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apikey}`
-      );
-      const json = await res.json();
-      setNews(json.results);
-    };
-    fetchNews();
+      )
+      .then((results) => {
+        const fetchedData = results.data.results;
+        setNews(fetchedData);
+      });
   }, [section]);
 
   return (

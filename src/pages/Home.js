@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { SearchContext } from "../context/SearchContextProvider";
 import LatestNews from "../components/LatestNews";
@@ -7,20 +8,20 @@ import "../components/NewsList.scss";
 
 const Home = () => {
   const [news, setNews] = useState([]);
-  const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
   const { articleSearch } = useContext(SearchContext);
+  const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
 
   console.log(articleSearch);
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const res = await fetch(
+    axios
+      .get(
         `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${apikey}`
-      );
-      const json = await res.json();
-      setNews(json.results);
-    };
-    fetchNews();
+      )
+      .then((results) => {
+        const fetchedData = results.data.results;
+        setNews(fetchedData);
+      });
   }, []);
 
   return (
