@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageHeader from "./components/PageHeader";
-import Home from "./pages/Home";
 import Siderbar from "./components/Sidebar";
 import SearchLine from "./components/SearchLine";
 import NewsList from "./components/NewsList";
@@ -24,7 +23,7 @@ function App() {
               <Routes>
                 <Route path="/mobilemenu" element={<MobileMenu />} />
                 <Route path="/favorites" element={<Favorites />} />
-                <Route path="/" element={<Home />} />
+                <Route path="/Home" element={<NewsList category={"home"} />} />
                 <Route
                   path="/World"
                   element={<NewsList category={"world"} />}

@@ -8,9 +8,13 @@ import "./NewsList.scss";
 
 const NewsList = (props) => {
   const [news, setNews] = useState([]);
+  const [section, setSection] = useState("home");
   const { articleSearch } = useContext(SearchContext);
   const apikey = "cggBDj3EwtAQatE8Y47R6YLGF3f5hACT";
-  const section = props.category;
+
+  useEffect(() => {
+    setSection(props.category);
+  }, [props.category]);
 
   useEffect(() => {
     axios
@@ -26,7 +30,7 @@ const NewsList = (props) => {
   return (
     <div className="newslist-container">
       <div className="newslist-desktop-nav">
-        <NavLink to="/" className="all-news">
+        <NavLink to="/Home" className="all-news">
           News
         </NavLink>
         <NavLink to="/favorites" className="fav">
@@ -34,7 +38,7 @@ const NewsList = (props) => {
         </NavLink>
       </div>
       <div className="newslist-mobile-nav">
-        <NavLink to="/" className="fav">
+        <NavLink to="/Home" className="fav">
           Featured
         </NavLink>
         <NavLink to="/latest news" className="fav">

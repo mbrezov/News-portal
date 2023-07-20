@@ -37,7 +37,7 @@ const SearchLine = () => {
             : "searchline-header"
         }
       >
-        <NavLink to="/" onClick={onClickResetSearch}>
+        <NavLink to="/Home" onClick={onClickResetSearch}>
           My<span>News</span>
         </NavLink>
         <div>

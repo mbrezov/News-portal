@@ -12,7 +12,7 @@ const Favorites = () => {
   return (
     <div className="newslist-container">
       <div className="newslist-desktop-nav">
-        <NavLink to="/" className="all-news">
+        <NavLink to="/Home" className="all-news">
           News
         </NavLink>
         <NavLink to="/favorites" className="fav">
@@ -20,7 +20,7 @@ const Favorites = () => {
         </NavLink>
       </div>
       <div className="newslist-mobile-nav">
-        <NavLink to="/" className="fav">
+        <NavLink to="/Home" className="fav">
           Featured
         </NavLink>
         <NavLink to="/latest news" className="fav">

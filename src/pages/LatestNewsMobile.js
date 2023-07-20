@@ -7,7 +7,7 @@ const LatestNewsMobile = () => {
   return (
     <div className="newslist-container">
       <div className="newslist-mobile-nav">
-        <NavLink to="/" className="fav">
+        <NavLink to="/Home" className="fav">
           Featured
         </NavLink>
         <NavLink to="/latest news" className="fav">

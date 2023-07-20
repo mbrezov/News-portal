@@ -5,7 +5,7 @@ import "./Sidebar.scss";
 const Siderbar = () => {
   return (
     <div className="sidebar">
-      <NavLink to="/">
+      <NavLink to="/Home">
         <svg
           width="20"
           height="20"

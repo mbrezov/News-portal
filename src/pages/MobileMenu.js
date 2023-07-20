@@ -5,7 +5,7 @@ import "./MobileMenu.scss";
 const MobileMenu = () => {
   return (
     <div className="mobilemenu">
-      <NavLink to="/" className="home-icon">
+      <NavLink to="/Home" className="home-icon">
         <svg
           width="20"
           height="20"
